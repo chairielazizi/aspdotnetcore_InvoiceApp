@@ -26,22 +26,22 @@ namespace InvoiceApp.Controllers
         }
 
         // GET: Invoice/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
+        //public async Task<IActionResult> Details(int? id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            var invoice = await _context.Invoices
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (invoice == null)
-            {
-                return NotFound();
-            }
+        //    var invoice = await _context.Invoices
+        //        .FirstOrDefaultAsync(m => m.Id == id);
+        //    if (invoice == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            return View(invoice);
-        }
+        //    return View(invoice);
+        //}
 
         // GET: Invoice/Create
         public IActionResult AddOrEdit(int id=0)
@@ -72,73 +72,73 @@ namespace InvoiceApp.Controllers
         }
 
         // GET: Invoice/Edit/5
-        public async Task<IActionResult> Edit(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
+        //public async Task<IActionResult> Edit(int? id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            var invoice = await _context.Invoices.FindAsync(id);
-            if (invoice == null)
-            {
-                return NotFound();
-            }
-            return View(invoice);
-        }
+        //    var invoice = await _context.Invoices.FindAsync(id);
+        //    if (invoice == null)
+        //    {
+        //        return NotFound();
+        //    }
+        //    return View(invoice);
+        //}
 
         // POST: Invoice/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Number,Status,IssueData,DueDate,ServiceName,UnitPrice,Quantity,ClientName,ClientAddress,ClientEmail,ClientPhoneNumber")] Invoice invoice)
-        {
-            if (id != invoice.Id)
-            {
-                return NotFound();
-            }
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public async Task<IActionResult> Edit(int id, [Bind("Id,Number,Status,IssueData,DueDate,ServiceName,UnitPrice,Quantity,ClientName,ClientAddress,ClientEmail,ClientPhoneNumber")] Invoice invoice)
+        //{
+        //    if (id != invoice.Id)
+        //    {
+        //        return NotFound();
+        //    }
 
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _context.Update(invoice);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!InvoiceExists(invoice.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
-            }
-            return View(invoice);
-        }
+        //    if (ModelState.IsValid)
+        //    {
+        //        try
+        //        {
+        //            _context.Update(invoice);
+        //            await _context.SaveChangesAsync();
+        //        }
+        //        catch (DbUpdateConcurrencyException)
+        //        {
+        //            if (!InvoiceExists(invoice.Id))
+        //            {
+        //                return NotFound();
+        //            }
+        //            else
+        //            {
+        //                throw;
+        //            }
+        //        }
+        //        return RedirectToAction(nameof(Index));
+        //    }
+        //    return View(invoice);
+        //}
 
         // GET: Invoice/Delete/5
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
+        //public async Task<IActionResult> Delete(int? id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            var invoice = await _context.Invoices
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (invoice == null)
-            {
-                return NotFound();
-            }
+        //    var invoice = await _context.Invoices
+        //        .FirstOrDefaultAsync(m => m.Id == id);
+        //    if (invoice == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            return View(invoice);
-        }
+        //    return View(invoice);
+        //}
 
         // POST: Invoice/Delete/5
         [HttpPost, ActionName("Delete")]
