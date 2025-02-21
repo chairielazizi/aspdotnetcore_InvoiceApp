@@ -4,44 +4,44 @@
     ViewData["Title"] = "Index";
 }
 
-<h1 class="mb-4 text-white text-4xl font-bold">Index</h1>
+<h1 class="mb-4 text-4xl font-bold text-white">Index</h1>
 
-<p class="hover:text-blue-700">
-    <a asp-action="Create" class="bg-blue-500 text-white py-2 px-4 rounded font-bold hover:text-blue-700">Create New</a>
+<p>
+    <a asp-action="Create" class="rounded bg-blue-700 px-4 py-2 font-bold text-white hover:bg-blue-500">Create New</a>
 </p>
-<div class="mt-5 container mx-auto">
-    <table class="bg-white border-gray-200 min-w-full border">
+<div class="container mx-auto mt-5">
+    <table class="min-w-full border border-gray-200 bg-white">
         <thead>
             <tr class="bg-gray-100">
-                <th class="py-2 px-4 border-b"> @Html.DisplayNameFor(model => model.Number) </th>
-                <th class="py-2 px-4 border-b"> @Html.DisplayNameFor(model => model.Status) </th>
-                <th class="py-2 px-4 border-b"> @Html.DisplayNameFor(model => model.IssueData) </th>
-                <th class="py-2 px-4 border-b"> @Html.DisplayNameFor(model => model.DueDate) </th>
-                <th class="py-2 px-4 border-b"> @Html.DisplayNameFor(model => model.ServiceName) </th>
-                <th class="py-2 px-4 border-b"> @Html.DisplayNameFor(model => model.UnitPrice) </th>
-                <th class="py-2 px-4 border-b"> @Html.DisplayNameFor(model => model.Quantity) </th>
-                @* <th class="py-2 px-4 border-b"> @Html.DisplayNameFor(model => model.ClientName) </th>
-                <th class="py-2 px-4 border-b"> @Html.DisplayNameFor(model => model.ClientAddress) </th>
-                <th class="py-2 px-4 border-b"> @Html.DisplayNameFor(model => model.ClientEmail) </th>
-                 <th class="py-2 px-4 border-b"> @Html.DisplayNameFor(model => model.ClientPhoneNumber) </th> *@
-                <th class="py-2 px-4 border-b">Action</th>
+                <th class="border-b px-4 py-2"> @Html.DisplayNameFor(model => model.Number) </th>
+                <th class="border-b px-4 py-2"> @Html.DisplayNameFor(model => model.Status) </th>
+                <th class="border-b px-4 py-2"> @Html.DisplayNameFor(model => model.IssueData) </th>
+                <th class="border-b px-4 py-2"> @Html.DisplayNameFor(model => model.DueDate) </th>
+                <th class="border-b px-4 py-2"> @Html.DisplayNameFor(model => model.ServiceName) </th>
+                <th class="border-b px-4 py-2"> @Html.DisplayNameFor(model => model.UnitPrice) </th>
+                <th class="border-b px-4 py-2"> @Html.DisplayNameFor(model => model.Quantity) </th>
+                @* <th class="border-b px-4 py-2"> @Html.DisplayNameFor(model => model.ClientName) </th>
+                <th class="border-b px-4 py-2"> @Html.DisplayNameFor(model => model.ClientAddress) </th>
+                <th class="border-b px-4 py-2"> @Html.DisplayNameFor(model => model.ClientEmail) </th>
+                 <th class="border-b px-4 py-2"> @Html.DisplayNameFor(model => model.ClientPhoneNumber) </th> *@
+                <th class="border-b px-4 py-2">Action</th>
             </tr>
         </thead>
         <tbody>
     @foreach (var item in Model) {
             <tr class="hover:bg-gray-100">
-                <td class="py-2 px-4 border-b"> @Html.DisplayFor(modelItem => item.Number) </td>
-                <td class="py-2 px-4 border-b"> @Html.DisplayFor(modelItem => item.Status) </td>
-                <td class="py-2 px-4 border-b"> @Html.DisplayFor(modelItem => item.IssueData) </td>
-                <td class="py-2 px-4 border-b"> @Html.DisplayFor(modelItem => item.DueDate) </td>
-                <td class="py-2 px-4 border-b"> @Html.DisplayFor(modelItem => item.ServiceName) </td>
-                <td class="py-2 px-4 border-b"> @Html.DisplayFor(modelItem => item.UnitPrice) </td>
-                <td class="py-2 px-4 border-b"> @Html.DisplayFor(modelItem => item.Quantity) </td>
-                    @*<td class="py-2 px-4 border-b"> @Html.DisplayFor(modelItem => item.ClientName) </td>
-                <td class="py-2 px-4 border-b"> @Html.DisplayFor(modelItem => item.ClientAddress) </td>
-                <td class="py-2 px-4 border-b"> @Html.DisplayFor(modelItem => item.ClientEmail) </td>
-                 <td class="py-2 px-4 border-b"> @Html.DisplayFor(modelItem => item.ClientPhoneNumber) </td> *@
-                <td class="py-2 px-4 border-b">
+                <td class="border-b px-4 py-2"> @Html.DisplayFor(modelItem => item.Number) </td>
+                <td class="border-b px-4 py-2"> @Html.DisplayFor(modelItem => item.Status) </td>
+                <td class="border-b px-4 py-2"> @Html.DisplayFor(modelItem => item.IssueData) </td>
+                <td class="border-b px-4 py-2"> @Html.DisplayFor(modelItem => item.DueDate) </td>
+                <td class="border-b px-4 py-2"> @Html.DisplayFor(modelItem => item.ServiceName) </td>
+                <td class="border-b px-4 py-2"> @Html.DisplayFor(modelItem => item.UnitPrice) </td>
+                <td class="border-b px-4 py-2"> @Html.DisplayFor(modelItem => item.Quantity) </td>
+                    @*<td class="border-b px-4 py-2"> @Html.DisplayFor(modelItem => item.ClientName) </td>
+                <td class="border-b px-4 py-2"> @Html.DisplayFor(modelItem => item.ClientAddress) </td>
+                <td class="border-b px-4 py-2"> @Html.DisplayFor(modelItem => item.ClientEmail) </td>
+                 <td class="border-b px-4 py-2"> @Html.DisplayFor(modelItem => item.ClientPhoneNumber) </td> *@
+                <td class="border-b px-4 py-2">
                     <a asp-action="Edit" asp-route-id="@item.Id" class="text-blue-500 hover:text-blue-700">Edit</a> |
                     <a asp-action="Details" asp-route-id="@item.Id" class="text-blue-500 hover:text-blue-700">Details</a> |
                     <a asp-action="Delete" asp-route-id="@item.Id" class="text-red-500 hover:text-red-700">Delete</a>

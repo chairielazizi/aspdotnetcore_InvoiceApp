@@ -4,80 +4,102 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
+<h1 class="mb-4 text-4xl font-bold text-white">Create</h1>
 
-<h4>Invoice</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Number" class="control-label"></label>
-                <input asp-for="Number" class="form-control" />
-                <span asp-validation-for="Number" class="text-danger"></span>
+<h4 class="mb-4 text-2xl text-white">Invoice</h4>
+<hr class="mb-4 stroke-white text-white" />
+<div class="w-full rounded-xl bg-slate-200 p-5">
+    <form asp-action="Create" class="space-y-4">
+        <div asp-validation-summary="ModelOnly" class="text-red-500"></div>
+        <div class="grid grid-cols-2 gap-4">
+            <div class="rounded-lg border border-white bg-white px-5 shadow-xl focus-within:border-emerald-600 focus-within:border-4">
+				<h3 class="text-2xl font-bold text-gray-700">Invoice Details</h3>
+				<hr class="mb-4 stroke-gray-700" />
+                <div class="my-2 grid grid-cols-3 gap-2">
+                    <label asp-for="@Model.Number" class="col-span-1 mb-2 block font-bold text-gray-700"></label>
+                    <input asp-for="@Model.Number" class="col-span-2 w-full appearance-none rounded border px-3 py-2 leading-tight text-gray-700 shadow focus:outline-none focus:shadow-outline" />
+                    <span asp-validation-for="Number" class="col-span-3 text-sm text-red-500"></span>
+                </div>
+                <div class="mb-3 grid grid-cols-3 gap-2">
+                    <label asp-for="@Model.Status" class="col-span-1 mb-2 block font-bold text-gray-700"></label>
+                    <input asp-for="@Model.Status" class="col-span-2 w-full appearance-none rounded border px-3 py-2 leading-tight text-gray-700 shadow focus:outline-none focus:shadow-outline" />
+                    <span asp-validation-for="Status" class="col-span-3 text-sm text-red-500"></span>
+                </div>
+                <div class="mb-3 grid grid-cols-3 gap-2">
+                    <label asp-for="@Model.IssueData" class="col-span-1 mb-2 block font-bold text-gray-700">Issue Date</label>
+                    <input asp-for="@Model.IssueData" type="date" class="col-span-2 w-full appearance-none rounded border px-3 py-2 leading-tight text-gray-700 shadow focus:outline-none focus:shadow-outline" />
+                    <span asp-validation-for="IssueData" class="col-span-3 text-sm text-red-500"></span>
+                </div>
+                <div class="mb-3 grid grid-cols-3 gap-2">
+                    <label asp-for="@Model.DueDate" class="col-span-1 mb-2 block font-bold text-gray-700">Due date</label>
+                    <input asp-for="@Model.DueDate" type="date" class="col-span-2 w-full appearance-none rounded border px-3 py-2 leading-tight text-gray-700 shadow focus:outline-none focus:shadow-outline" />
+                    <span asp-validation-for="DueDate" class="col-span-3 text-sm text-red-500"></span>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="Status" class="control-label"></label>
-                <input asp-for="Status" class="form-control" />
-                <span asp-validation-for="Status" class="text-danger"></span>
+            <div class="rounded-lg border border-white bg-white px-5 shadow-xl focus-within:border-emerald-600 focus-within:border-4">
+                <h3 class="text-2xl font-bold text-gray-700">Client Details</h3>
+                <hr class="stroke-gray-700" />
+                <div class="my-2 grid grid-cols-3 gap-2">
+                    <label asp-for="@Model.ClientName" class="col-span-1 mb-2 block font-bold text-gray-700">Client Name</label>
+                    <input asp-for="@Model.ClientName" class="col-span-2 w-full appearance-none rounded border px-3 py-2 leading-tight text-gray-700 shadow focus:outline-none focus:shadow-outline" />
+                    <span asp-validation-for="ClientName" class="col-span-3 text-sm text-red-500"></span>
+                </div>
+                <div class="mb-3 grid grid-cols-3 gap-2">
+                    <label asp-for="@Model.ClientAddress" class="col-span-1 mb-2 block font-bold text-gray-700">Address</label>
+                    <input asp-for="@Model.ClientAddress" class="col-span-2 w-full appearance-none rounded border px-3 py-2 leading-tight text-gray-700 shadow focus:outline-none focus:shadow-outline" />
+                    <span asp-validation-for="ClientAddress" class="col-span-3 text-sm text-red-500"></span>
+                </div>
+                <div class="mb-3 grid grid-cols-3 gap-2">
+                    <label asp-for="@Model.ClientEmail" class="col-span-1 mb-2 block font-bold text-gray-700">Email</label>
+                    <input asp-for="@Model.ClientEmail" class="col-span-2 w-full appearance-none rounded border px-3 py-2 leading-tight text-gray-700 shadow focus:outline-none focus:shadow-outline" />
+                    <span asp-validation-for="ClientEmail" class="col-span-3 text-sm text-red-500"></span>
+                </div>
+                <div class="mb-3 grid grid-cols-3 gap-2">
+                    <label asp-for="@Model.ClientPhoneNumber" class="col-span-1 mb-2 block font-bold text-gray-700">Phone Number</label>
+                    <input asp-for="@Model.ClientPhoneNumber" class="col-span-2 w-full appearance-none rounded border px-3 py-2 leading-tight text-gray-700 shadow focus:outline-none focus:shadow-outline" />
+                    <span asp-validation-for="ClientPhoneNumber" class="col-span-3 text-sm text-red-500"></span>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="IssueData" class="control-label"></label>
-                <input asp-for="IssueData" class="form-control" />
-                <span asp-validation-for="IssueData" class="text-danger"></span>
+        </div>
+        <div class="rounded-lg border border-white bg-white px-5 shadow-xl focus-within:border-emerald-600 focus-within:border-4">
+            <h3 class="text-2xl font-bold text-gray-700">Service Details</h3>
+            <hr class="stroke-gray-700" />
+            <div class="flex flex-wrap gap-2">
+                <div class="mb-4 flex-grow">
+                    <label asp-for="@Model.ServiceName" class="mb-2 block font-bold text-gray-700">Service Name</label>
+                    <input asp-for="@Model.ServiceName" class="w-full appearance-none rounded border px-3 py-2 leading-tight text-gray-700 shadow focus:outline-none focus:shadow-outline" />
+                    <span asp-validation-for="ServiceName" class="text-sm text-red-500"></span>
+                </div>
+                <div class="mb-4 w-1/6">
+                    <label asp-for="@Model.Quantity" class="mb-2 block font-bold text-gray-700"></label>
+                    <input asp-for="@Model.Quantity" type="number" min="0"  placeholder="0" class="w-full appearance-none rounded border px-3 py-2 leading-tight text-gray-700 shadow focus:outline-none focus:shadow-outline" />
+                    <span asp-validation-for="Quantity" class="text-sm text-red-500"></span>
+                </div>
+                <div class="mb-4 w-1/6">
+                    <label asp-for="@Model.UnitPrice" class="mb-2 block font-bold text-gray-700">Unit Price</label>
+                    <input asp-for="@Model.UnitPrice" type="number" min="0" step="0.01" placeholder="0.00" class="w-full appearance-none rounded border px-3 py-2 leading-tight text-gray-700 shadow focus:outline-none focus:shadow-outline" />
+                    <span asp-validation-for="UnitPrice" class="text-sm text-red-500"></span>
+                </div>
+                <div class="mb-4 w-1/6">
+                    <label for="TotalPrice" class="mb-2 block font-bold text-gray-700">Total Price</label>
+                    <input id="TotalPrice" type="number" min="0" step="0.01" placeholder="0.00" class="w-full appearance-none rounded border px-3 py-2 leading-tight text-gray-700 shadow focus:outline-none focus:shadow-outline" />
+                    <span asp-validation-for="Quantity" class="text-sm text-red-500"></span>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="DueDate" class="control-label"></label>
-                <input asp-for="DueDate" class="form-control" />
-                <span asp-validation-for="DueDate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ServiceName" class="control-label"></label>
-                <input asp-for="ServiceName" class="form-control" />
-                <span asp-validation-for="ServiceName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="UnitPrice" class="control-label"></label>
-                <input asp-for="UnitPrice" class="form-control" />
-                <span asp-validation-for="UnitPrice" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Quantity" class="control-label"></label>
-                <input asp-for="Quantity" class="form-control" />
-                <span asp-validation-for="Quantity" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ClientName" class="control-label"></label>
-                <input asp-for="ClientName" class="form-control" />
-                <span asp-validation-for="ClientName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ClientAddress" class="control-label"></label>
-                <input asp-for="ClientAddress" class="form-control" />
-                <span asp-validation-for="ClientAddress" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ClientEmail" class="control-label"></label>
-                <input asp-for="ClientEmail" class="form-control" />
-                <span asp-validation-for="ClientEmail" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ClientPhoneNumber" class="control-label"></label>
-                <input asp-for="ClientPhoneNumber" class="form-control" />
-                <span asp-validation-for="ClientPhoneNumber" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
+
+
+        </div>
+        <div class="mb-4">
+            <input type="submit" value="Create" class="cursor-pointer rounded bg-blue-700 px-4 py-2 font-bold text-white hover:bg-blue-500 focus:outline-none focus:shadow-outline" />
+            <a asp-action="Index" class="text-blue-500 hover:text-blue-700">Back to List</a>
+        </div>
+    </form>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }
+
