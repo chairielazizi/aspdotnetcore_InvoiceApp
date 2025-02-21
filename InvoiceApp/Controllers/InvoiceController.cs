@@ -44,9 +44,12 @@ namespace InvoiceApp.Controllers
         }
 
         // GET: Invoice/Create
-        public IActionResult Create()
+        public IActionResult AddOrEdit(int id=0)
         {
-            return View();
+            if(id == 0)
+                return View(new Invoice());
+            else
+                return View(_context.Invoices.Find(id));
         }
 
         // POST: Invoice/Create
@@ -54,11 +57,14 @@ namespace InvoiceApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Number,Status,IssueData,DueDate,ServiceName,UnitPrice,Quantity,ClientName,ClientAddress,ClientEmail,ClientPhoneNumber")] Invoice invoice)
+        public async Task<IActionResult> AddOrEdit([Bind("Id,Number,Status,IssueData,DueDate,ServiceName,UnitPrice,Quantity,ClientName,ClientAddress,ClientEmail,ClientPhoneNumber")] Invoice invoice)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(invoice);
+                if (invoice.Id == 0)
+                    _context.Add(invoice);
+                else
+                    _context.Update(invoice);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }

@@ -1,15 +1,15 @@
 ﻿@model InvoiceApp.Models.Invoice
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = Model.Id == 0 ? "Create Invoice" : "Edit Invoice"; ;
 }
 
-<h1 class="mb-4 text-4xl font-bold text-white">Create</h1>
+<h1 class="mb-4 text-4xl font-bold text-white">@ViewData["Title"]</h1>
 
-<h4 class="mb-4 text-2xl text-white">Invoice</h4>
+@* <h4 class="mb-4 text-2xl text-white">Invoice</h4> *@
 <hr class="mb-4 stroke-white text-white" />
 <div class="w-full rounded-xl bg-slate-200 p-5">
-    <form asp-action="Create" class="space-y-4">
+    <form asp-action="AddOrEdit" class="space-y-4">
         <div asp-validation-summary="ModelOnly" class="text-red-500"></div>
         <div class="grid grid-cols-2 gap-4">
             <div class="rounded-lg border border-white bg-white px-5 shadow-xl focus-within:border-emerald-600 focus-within:border-4">
@@ -17,12 +17,16 @@
 				<hr class="mb-4 stroke-gray-700" />
                 <div class="my-2 grid grid-cols-3 gap-2">
                     <label asp-for="@Model.Number" class="col-span-1 mb-2 block font-bold text-gray-700"></label>
-                    <input asp-for="@Model.Number" class="col-span-2 w-full appearance-none rounded border px-3 py-2 leading-tight text-gray-700 shadow focus:outline-none focus:shadow-outline" />
+                    <input asp-for="@Model.Number" required class="col-span-2 w-full appearance-none rounded border px-3 py-2 leading-tight text-gray-700 shadow focus:outline-none focus:shadow-outline" />
                     <span asp-validation-for="Number" class="col-span-3 text-sm text-red-500"></span>
                 </div>
                 <div class="mb-3 grid grid-cols-3 gap-2">
                     <label asp-for="@Model.Status" class="col-span-1 mb-2 block font-bold text-gray-700"></label>
-                    <input asp-for="@Model.Status" class="col-span-2 w-full appearance-none rounded border px-3 py-2 leading-tight text-gray-700 shadow focus:outline-none focus:shadow-outline" />
+                    <select asp-for="@Model.Status" class="col-span-2 w-full appearance-none rounded border px-3 py-2 leading-tight text-gray-700 shadow focus:outline-none focus:shadow-outline">
+                        <option disabled>Select the status:</option>
+                        <option value="Pending">Pending</option>
+                        <option value="Paid">Paid</option>
+                    </select>
                     <span asp-validation-for="Status" class="col-span-3 text-sm text-red-500"></span>
                 </div>
                 <div class="mb-3 grid grid-cols-3 gap-2">
@@ -51,12 +55,12 @@
                 </div>
                 <div class="mb-3 grid grid-cols-3 gap-2">
                     <label asp-for="@Model.ClientEmail" class="col-span-1 mb-2 block font-bold text-gray-700">Email</label>
-                    <input asp-for="@Model.ClientEmail" class="col-span-2 w-full appearance-none rounded border px-3 py-2 leading-tight text-gray-700 shadow focus:outline-none focus:shadow-outline" />
+                    <input asp-for="@Model.ClientEmail" type="email"  placeholder="ahoy@email.com" class="col-span-2 w-full appearance-none rounded border px-3 py-2 leading-tight text-gray-700 shadow focus:outline-none focus:shadow-outline" />
                     <span asp-validation-for="ClientEmail" class="col-span-3 text-sm text-red-500"></span>
                 </div>
                 <div class="mb-3 grid grid-cols-3 gap-2">
                     <label asp-for="@Model.ClientPhoneNumber" class="col-span-1 mb-2 block font-bold text-gray-700">Phone Number</label>
-                    <input asp-for="@Model.ClientPhoneNumber" class="col-span-2 w-full appearance-none rounded border px-3 py-2 leading-tight text-gray-700 shadow focus:outline-none focus:shadow-outline" />
+                    <input asp-for="@Model.ClientPhoneNumber" type="number" placeholder="60123456789" class="col-span-2 w-full appearance-none rounded border px-3 py-2 leading-tight text-gray-700 shadow focus:outline-none focus:shadow-outline" />
                     <span asp-validation-for="ClientPhoneNumber" class="col-span-3 text-sm text-red-500"></span>
                 </div>
             </div>
@@ -72,17 +76,17 @@
                 </div>
                 <div class="mb-4 w-1/6">
                     <label asp-for="@Model.Quantity" class="mb-2 block font-bold text-gray-700"></label>
-                    <input asp-for="@Model.Quantity" type="number" min="0"  placeholder="0" class="w-full appearance-none rounded border px-3 py-2 leading-tight text-gray-700 shadow focus:outline-none focus:shadow-outline" />
+                    <input asp-for="@Model.Quantity" id="quantityInput" type="number" min="0"  placeholder="0" oninput="calculateTotalPrice()" class="w-full appearance-none rounded border px-3 py-2 leading-tight text-gray-700 shadow focus:outline-none focus:shadow-outline" />
                     <span asp-validation-for="Quantity" class="text-sm text-red-500"></span>
                 </div>
                 <div class="mb-4 w-1/6">
                     <label asp-for="@Model.UnitPrice" class="mb-2 block font-bold text-gray-700">Unit Price</label>
-                    <input asp-for="@Model.UnitPrice" type="number" min="0" step="0.01" placeholder="0.00" class="w-full appearance-none rounded border px-3 py-2 leading-tight text-gray-700 shadow focus:outline-none focus:shadow-outline" />
+                    <input asp-for="@Model.UnitPrice" id="priceInput" type="number" min="0" step="0.01" placeholder="0.00" oninput="calculateTotalPrice()" class="w-full appearance-none rounded border px-3 py-2 leading-tight text-gray-700 shadow focus:outline-none focus:shadow-outline" />
                     <span asp-validation-for="UnitPrice" class="text-sm text-red-500"></span>
                 </div>
                 <div class="mb-4 w-1/6">
                     <label for="TotalPrice" class="mb-2 block font-bold text-gray-700">Total Price</label>
-                    <input id="TotalPrice" type="number" min="0" step="0.01" placeholder="0.00" class="w-full appearance-none rounded border px-3 py-2 leading-tight text-gray-700 shadow focus:outline-none focus:shadow-outline" />
+                    <input id="TotalPrice" disabled type="number" min="0" step="0.01" placeholder="0.00" class="w-full appearance-none rounded border px-3 py-2 leading-tight text-gray-700 shadow focus:outline-none focus:shadow-outline" />
                     <span asp-validation-for="Quantity" class="text-sm text-red-500"></span>
                 </div>
             </div>
@@ -90,16 +94,26 @@
 
         </div>
         <div class="mb-4">
-            <input type="submit" value="Create" class="cursor-pointer rounded bg-blue-700 px-4 py-2 font-bold text-white hover:bg-blue-500 focus:outline-none focus:shadow-outline" />
+            <input type="submit" value="Create" class="cursor-pointer rounded bg-blue-700 px-4 py-2 font-bold text-white hover:bg-blue-600 focus:outline-none focus:shadow-outline" />
             <a asp-action="Index" class="text-blue-500 hover:text-blue-700">Back to List</a>
         </div>
     </form>
+    @* <div class="flex-grow"></div> *@
 </div>
 
 
 @section Scripts {
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
+
+        <script>
+            function calculateTotalPrice() {
+                var quantity = parseFloat(document.getElementById('quantityInput').value) || 0;
+                var unitPrice = parseFloat(document.getElementById('priceInput').value) || 0;
+                var totalPrice = quantity * unitPrice;
+                document.getElementById('TotalPrice').value = totalPrice.toFixed(2);
+            }
+        </script>
     }
 }
 
