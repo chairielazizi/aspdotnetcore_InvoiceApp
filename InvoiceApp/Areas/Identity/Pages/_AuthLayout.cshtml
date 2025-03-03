@@ -1,0 +1,27 @@
+﻿@{
+    Layout = "/Views/Shared/_Layout.cshtml";
+}
+
+<div class="mt-10 flex justify-center">
+    <div class="w-full max-w-md">
+        <div class="rounded-lg bg-slate-900 shadow-md">
+            <div class="flex justify-center border-b">
+                <a class="w-1/2 py-2 text-center text-lg font-semibold" href="/Identity/Account/Login"
+                   class="nav-link @((ViewData["Title"] as string) == "Log in" ? "border-b-2 border-blue-500" : "")">
+                    Log In
+                </a>
+                <a class="w-1/2 py-2 text-center text-lg font-semibold" href="/Identity/Account/Register"
+                   class="nav-link @((ViewData["Title"] as string) == "Register" ? "border-b-2 border-blue-500" : "")">
+                    Register
+                </a>
+            </div>
+            <div class="p-4">
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @await RenderSectionAsync("Scripts", required: false)
+}
