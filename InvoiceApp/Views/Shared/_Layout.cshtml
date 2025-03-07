@@ -21,14 +21,22 @@
             <div class="flex-shrink-0">
                 <a class="text-3xl font-bold" asp-area="" asp-controller="Home" asp-action="Index">InvoiceApp</a>
             </div>
-            <nav class="flex flex-row space-x-9">
-                <a class="text-2xl text-black hover:text-gray-700" asp-area="" asp-controller="Home"
-                    asp-action="Index">Home</a>
-                <a class="text-2xl text-black hover:text-gray-700" asp-area="" asp-controller="Invoice"
-                    asp-action="Index">Invoice</a>
-                <a class="text-2xl text-black hover:text-gray-700" asp-area="" asp-controller="Home"
-                    asp-action="Privacy">Privacy</a>
-            </nav>
+            <div class="flex flex-row">
+                <nav class="flex flex-row space-x-9">
+                    <a class="text-2xl text-black hover:text-gray-700" asp-area="" asp-controller="Home"
+                       asp-action="Index">Home</a>
+                    <a class="text-2xl text-black hover:text-gray-700" asp-area="" asp-controller="Invoice"
+                       asp-action="Index">Invoice</a>
+                    <a class="text-2xl text-black hover:text-gray-700" asp-area="" asp-controller="Home"
+                       asp-action="Privacy">Privacy</a>
+                </nav>
+                <div class="mx-2 font-bold">
+                    <p>@ViewData["UserID"]</p>
+
+                    <partial name="_LoginPartial" />
+                </div>
+            </div>
+            
         </div>
     </header>
 

@@ -1,4 +1,4 @@
-/*! tailwindcss v4.0.11 | MIT License | https://tailwindcss.com */
+/*! tailwindcss v4.0.12 | MIT License | https://tailwindcss.com */
 @layer theme, base, components, utilities;
 @layer theme {
   :root, :host {
@@ -23,6 +23,7 @@
     --color-gray-300: oklch(0.872 0.01 258.338);
     --color-gray-400: oklch(0.707 0.022 261.325);
     --color-gray-700: oklch(0.373 0.034 259.733);
+    --color-gray-800: oklch(0.278 0.033 256.848);
     --color-black: #000;
     --color-white: #fff;
     --spacing: 0.25rem;
@@ -527,6 +528,9 @@
   .mb-5 {
     margin-bottom: calc(var(--spacing) * 5);
   }
+  .mb-6 {
+    margin-bottom: calc(var(--spacing) * 6);
+  }
   .mb-auto {
     margin-bottom: auto;
   }
@@ -648,6 +652,9 @@
     flex-grow: 0;
   }
   .flex-grow-1 {
+    flex-grow: 1;
+  }
+  .grow {
     flex-grow: 1;
   }
   .caption-top {
@@ -1090,6 +1097,9 @@
   .text-gray-700 {
     color: var(--color-gray-700);
   }
+  .text-gray-800 {
+    color: var(--color-gray-800);
+  }
   .text-red-500 {
     color: var(--color-red-500);
   }
@@ -1262,6 +1272,11 @@
     &:focus {
       --tw-outline-style: none;
       outline-style: none;
+    }
+  }
+  .md\:mb-0 {
+    @media (width >= 48rem) {
+      margin-bottom: calc(var(--spacing) * 0);
     }
   }
   .md\:w-1\/2 {

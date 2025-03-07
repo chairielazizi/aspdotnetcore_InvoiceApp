@@ -1,20 +1,35 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using InvoiceApp.Models;
+using Microsoft.AspNetCore.Identity;
+using InvoiceApp.Areas.Identity.Data;
 
 namespace InvoiceApp.Controllers;
 
 public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
+    private readonly UserManager<ApplicationUser> _userManager;
 
-    public HomeController(ILogger<HomeController> logger)
+    public HomeController(ILogger<HomeController> logger, UserManager<ApplicationUser> userManager)
     {
         _logger = logger;
+        this._userManager = userManager;
     }
 
-    public IActionResult Index()
+    public async Task<IActionResult> Index()
     {
+        //ViewData["UserID"] = _userManager.GetUserId(this.User);
+        if (User.Identity.IsAuthenticated)
+        {
+            //var user = _userManager.GetUserAsync(User).Result;
+            var user = await _userManager.GetUserAsync(User);
+            ViewData["UserID"] = user?.FirstName + " " + user?.LastName;
+        }
+        else
+        {
+            ViewData["UserID"] = "User ID";
+        }
         return View();
     }
 
