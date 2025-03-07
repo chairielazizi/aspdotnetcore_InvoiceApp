@@ -5,13 +5,11 @@
 <div class="mt-10 flex justify-center">
     <div class="w-full max-w-md">
         <div class="rounded-lg bg-slate-900 shadow-md">
-            <div class="flex justify-center border-b">
-                <a class="w-1/2 py-2 text-center text-lg font-semibold" href="/Identity/Account/Login"
-                   class="nav-link @((ViewData["Title"] as string) == "Log in" ? "border-b-2 border-blue-500" : "")">
+            <div class="nav-tabs flex justify-center border-b">
+                <a class="w-1/2 py-2 text-center text-lg font-semibold @((ViewData["Title"] as string) == "Log in" ? "bg-gray-400 text-black" : "")" href="/Identity/Account/Login">
                     Log In
                 </a>
-                <a class="w-1/2 py-2 text-center text-lg font-semibold" href="/Identity/Account/Register"
-                   class="nav-link @((ViewData["Title"] as string) == "Register" ? "border-b-2 border-blue-500" : "")">
+                <a class="w-1/2 py-2 text-center text-lg font-semibold @((ViewData["Title"] as string) == "Register" ? "bg-gray-400 text-black" : "")" href="/Identity/Account/Register">
                     Register
                 </a>
             </div>
@@ -24,4 +22,13 @@
 
 @section Scripts {
     @await RenderSectionAsync("Scripts", required: false)
+
+    <script>
+        $(function(){
+            const currentPage = location.pathname;
+            $('.nav-tabs a').each(function(){
+                const $this = $(this);
+            }
+        })
+    </script>
 }
