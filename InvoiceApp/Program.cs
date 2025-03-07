@@ -12,13 +12,15 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
 
 builder.Services.AddDbContext<ApplicationDbContext>(options => {
-    var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-    options.UseSqlServer(connectionString);
+    var connectionString = builder.Configuration.GetConnectionString("PGConnection");
+    //options.UseSqlServer(connectionString);
+    options.UseNpgsql(connectionString, npgsqlOptions => npgsqlOptions.CommandTimeout(180));
 });
 
 builder.Services.AddDbContext<AuthDbContext>(options => {
-    var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-    options.UseSqlServer(connectionString);
+    var connectionString = builder.Configuration.GetConnectionString("PGConnection");
+    //options.UseSqlServer(connectionString);
+    options.UseNpgsql(connectionString, npgsqlOptions => npgsqlOptions.CommandTimeout(180));
 });
 
 builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<AuthDbContext>();

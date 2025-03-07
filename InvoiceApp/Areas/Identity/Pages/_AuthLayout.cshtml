@@ -6,10 +6,10 @@
     <div class="w-full max-w-md">
         <div class="rounded-lg bg-slate-900 shadow-md">
             <div class="nav-tabs flex justify-center border-b">
-                <a class="w-1/2 py-2 text-center text-lg font-semibold @((ViewData["Title"] as string) == "Log in" ? "bg-gray-400 text-black" : "")" href="/Identity/Account/Login">
+                <a class="w-1/2 py-2 text-center text-lg font-semibold @((ViewData["Title"] as string) == "Log in" ? "bg-gray-300 text-black" : "")" href="/Identity/Account/Login">
                     Log In
                 </a>
-                <a class="w-1/2 py-2 text-center text-lg font-semibold @((ViewData["Title"] as string) == "Register" ? "bg-gray-400 text-black" : "")" href="/Identity/Account/Register">
+                <a class="w-1/2 py-2 text-center text-lg font-semibold @((ViewData["Title"] as string) == "Register" ? "bg-gray-300 text-black" : "")" href="/Identity/Account/Register">
                     Register
                 </a>
             </div>
@@ -24,11 +24,14 @@
     @await RenderSectionAsync("Scripts", required: false)
 
     <script>
-        $(function(){
-            const currentPage = location.pathname;
-            $('.nav-tabs a').each(function(){
-                const $this = $(this);
-            }
-        })
+        // $(function(){
+        //     const currentPage = location.pathname;
+        //     $('.nav-tabs a').each(function(){
+        //         const $this = $(this);
+        //         if ($this.attr('href') === currentPage) {
+        //             $this.addClass('bg-gray-400 text-black border-b-2 border-blue-500');
+        //         }
+        //     }
+        // })
     </script>
 }
