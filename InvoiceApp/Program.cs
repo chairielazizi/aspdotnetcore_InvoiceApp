@@ -11,6 +11,12 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddRazorPages();
 
+// Add user secrets in development environment
+if (builder.Environment.IsDevelopment())
+{
+    builder.Configuration.AddUserSecrets<Program>();
+}
+
 builder.Services.AddDbContext<ApplicationDbContext>(options => {
     var connectionString = builder.Configuration.GetConnectionString("PGConnection");
     //options.UseSqlServer(connectionString);

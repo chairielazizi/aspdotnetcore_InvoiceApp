@@ -10,19 +10,32 @@
 <div class="row rounded-lg p-3">
     <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
         <div asp-validation-summary="ModelOnly" class="mb-4 text-red-500" role="alert"></div>
+        <div class="space mb-4 flex flex-wrap">
+            <div class="mb-6 w-full md:w-1/2 md:mb-0">
+                <label asp-for="Input.FirstName" class="mb-2 block text-sm font-bold text-white">First Name</label>
+                <input asp-for="Input.FirstName" class="w-full appearance-none rounded border px-3 py-2 leading-tight text-white shadow focus:outline-none focus:shadow-outline" autocomplete="firstname" aria-required="true" placeholder="First Name" />
+                <span asp-validation-for="Input.FirstName" class="text-sm text-red-500"></span>
+            </div>
+            <div class="w-full md:w-1/2">
+                <label asp-for="Input.LastName" class="mb-2 block text-sm font-bold text-white">Last Name</label>
+                <input asp-for="Input.LastName" class="w-full appearance-none rounded border px-3 py-2 leading-tight text-white shadow focus:outline-none focus:shadow-outline" autocomplete="lastname" aria-required="true" placeholder="Last Name" />
+                <span asp-validation-for="Input.LastName" class="text-sm text-red-500"></span>
+            </div>
+        </div>
+
         <div class="mb-4">
             <label asp-for="Input.Email" class="mb-2 block text-sm font-bold text-white">Email</label>
-            <input asp-for="Input.Email" class="w-full appearance-none rounded border px-3 py-2 leading-tight text-white shadow focus:outline-none focus:shadow-outline" autocomplete="username" aria-required="true" />
+            <input asp-for="Input.Email" class="w-full appearance-none rounded border px-3 py-2 leading-tight text-white shadow focus:outline-none focus:shadow-outline" autocomplete="username" aria-required="true" placeholder="email@example.com" />
             <span asp-validation-for="Input.Email" class="text-sm text-red-500"></span>
         </div>
         <div class="mb-4">
             <label asp-for="Input.Password" class="mb-2 block text-sm font-bold text-white">Password</label>
-            <input asp-for="Input.Password" class="w-full appearance-none rounded border px-3 py-2 leading-tight text-white shadow focus:outline-none focus:shadow-outline" autocomplete="new-password" aria-required="true" />
+            <input asp-for="Input.Password" class="w-full appearance-none rounded border px-3 py-2 leading-tight text-white shadow focus:outline-none focus:shadow-outline" autocomplete="new-password" aria-required="true" placeholder="Your Password" />
             <span asp-validation-for="Input.Password" class="text-sm text-red-500"></span>
         </div>
         <div class="mb-4">
             <label asp-for="Input.ConfirmPassword" class="mb-2 block text-sm font-bold text-white">Confirm Password</label>
-            <input asp-for="Input.ConfirmPassword" class="w-full appearance-none rounded border px-3 py-2 leading-tight text-white shadow focus:outline-none focus:shadow-outline" autocomplete="new-password" aria-required="true" />
+            <input asp-for="Input.ConfirmPassword" class="w-full appearance-none rounded border px-3 py-2 leading-tight text-white shadow focus:outline-none focus:shadow-outline" autocomplete="new-password" aria-required="true" placeholder="Confirm Passowrd" />
             <span asp-validation-for="Input.ConfirmPassword" class="text-sm text-red-500"></span>
         </div>
         <div class="mb-4">
