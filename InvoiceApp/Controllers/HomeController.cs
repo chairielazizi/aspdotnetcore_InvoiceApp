@@ -19,10 +19,10 @@ public class HomeController : Controller
 
     public async Task<IActionResult> Index()
     {
-        //ViewData["UserID"] = _userManager.GetUserId(this.User);
         if (User.Identity.IsAuthenticated)
         {
-            //var user = _userManager.GetUserAsync(User).Result;
+            //ViewData["UserID"] = _userManager.GetUserId(this.User);
+            //var user = _userManager.GetUserAsync(User).Result
             var user = await _userManager.GetUserAsync(User);
             ViewData["UserID"] = user?.FirstName + " " + user?.LastName;
         }

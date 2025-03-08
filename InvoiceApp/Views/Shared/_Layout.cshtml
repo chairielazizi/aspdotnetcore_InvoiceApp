@@ -27,11 +27,14 @@
                        asp-action="Index">Home</a>
                     <a class="text-2xl text-black hover:text-gray-700" asp-area="" asp-controller="Invoice"
                        asp-action="Index">Invoice</a>
-                    <a class="text-2xl text-black hover:text-gray-700" asp-area="" asp-controller="Home"
+					@if (!User.Identities.Any(x => x.IsAuthenticated))
+					{
+                        <a class="text-2xl text-black hover:text-gray-700" asp-area="" asp-controller="Home"
                        asp-action="Privacy">Privacy</a>
+					}
                 </nav>
-                <div class="mx-2 font-bold">
-                    <p>@ViewData["UserID"]</p>
+                <div class="ml-6 font-bold">
+                    @* <p>@ViewData["UserID"]</p> *@
 
                     <partial name="_LoginPartial" />
                 </div>

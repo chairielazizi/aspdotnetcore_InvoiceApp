@@ -1,6 +1,6 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
-    ViewData["UserID"] = User.Identity.IsAuthenticated ? User.Identity.Name : "User ID";
+    // ViewData["UserID"] = User.Identity.IsAuthenticated ? User.Identity.Name : "User ID";
 }
 
 <div class="flex h-96 items-center justify-center">
@@ -17,6 +17,17 @@
                 {
                     <a asp-area="Identity" asp-page="/Account/Login" class="mr-4 rounded bg-blue-500 px-4 py-2 font-bold text-white hover:bg-blue-700">Sign In</a>
                     <a asp-area="Identity" asp-page="/Account/Register" class="rounded bg-green-500 px-4 py-2 font-bold text-white hover:bg-green-700">Sign Up</a>
+                }
+                else
+                {
+                    @* <h1 class="mb-4 text-4xl font-bold text-white">Hey @ViewData["UserID"]</h1> *@
+					<h1 class="mb-4 text-4xl font-semibold text-white">
+						Hey @ViewData["UserID"] <br />
+                        Start to manage your
+                        <a asp-area="" asp-controller="Invoice"
+                           asp-action="Index" class="text-blue-500">Invoices
+                       </a>
+                    </h1>
                 }
             </div>
         </div>
